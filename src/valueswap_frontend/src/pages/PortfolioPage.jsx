@@ -10,7 +10,7 @@ const PortfolioPage = () => {
     return (
         <div className='h-screen '>
                 <div className='text-center mt-12'>
-                <span className='text-3xl leading-5'>Portfolio</span>
+                <span className='text-4xl leading-5'>Portfolio</span>
                 </div>
          
             <Routes>
