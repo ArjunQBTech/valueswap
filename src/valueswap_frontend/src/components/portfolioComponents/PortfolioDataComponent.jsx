@@ -109,15 +109,15 @@ const PortfolioDataComponent = () => {
   const navigate = useNavigate()
   const Headings = ['Pool name', 'Staking', 'TVL', 'Volume(24h)', 'APR']
   return (
-    <div className='max-w-[1200px] mx-auto h-screen relative'>
+    <div className='max-w-[1200px] mx-auto h-screen relative font-gilroy'>
       <div className='flex justify-between mt-8 px-8 mx-auto'>
-        <div className='bg-gray-700 bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10 border  border-[#FFFFFF66] rounded-2xl w-[48%] py-8 text-center'>
+        <div className='bg-gray-700 bg-clip-padding backdrop-filter backdrop-blur-[32px] bg-opacity-10 border  border-[#FFFFFF66] rounded-2xl w-[48%] py-8 text-center'>
           <h3 className=''>My liquidity</h3>
-          <h1 className='text-3xl font-semibold tracking-wide'>$0.00</h1>
+          <h1 className='md:text-6xl text-3xl font-semibold tracking-wide'>$0.00</h1>
         </div>
-        <div className='bg-gray-700 bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10 border  border-[#FFFFFF66] rounded-2xl w-[48%] py-8 text-center'>
+        <div className='bg-gray-700 bg-clip-padding backdrop-filter backdrop-blur-[32px] bg-opacity-10 border  border-[#FFFFFF66] rounded-2xl w-[48%] py-8 text-center'>
           <h3>Claimable incentives</h3>
-          <h1 className='text-3xl font-semibold tracking-wide'>$0.00</h1>
+          <h1 className='md:text-6xl text-3xl font-semibold tracking-wide'>$0.00</h1>
         </div>
       </div>
       <div className='w-full h-screen text-white  px-8 mx-auto absolute'>
@@ -167,7 +167,7 @@ const PortfolioDataComponent = () => {
             </div>
           </div>
         </div>
-        <div className='flex flex-col font-gilroy min-h-[30%] bg-gray-700 bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10 border  border-[#FFFFFF66] rounded-2xl '>
+        <div className='flex flex-col font-gilroy min-h-[50%] bg-gray-700 bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10 border  border-[#FFFFFF66] rounded-2xl '>
           <div className='-my-2 overflow-x-auto'>
             <div className='inline-block min-w-full py-2 align-middle'>
               {allDataInPool.Ok?.length <= 0 ? (
@@ -205,6 +205,7 @@ const PortfolioDataComponent = () => {
                           ))}
                         </tr>
                       </thead>
+                      <hr className='w-[95%] left-1/2 -translate-x-1/2 absolute'/>
                       <tbody>
                         {isAuthenticated ? (
                           //  allDataInPool
@@ -282,7 +283,7 @@ const PortfolioDataComponent = () => {
                             ))
                           )
                         ) : (
-                          <tr>
+                          <tr className='absolute w-full h-full flex justify-center items-center'>
                             <td colSpan={4} className='text-center text-white'>
                               <GradientButton
                                 CustomCss={`hover:opacity-75 text-xs md:text-base lg:text-base h-[45px] w-[120px] py-2 lg:py-4`}
