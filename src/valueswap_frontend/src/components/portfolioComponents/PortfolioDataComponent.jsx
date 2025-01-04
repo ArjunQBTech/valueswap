@@ -206,7 +206,7 @@ const PortfolioDataComponent = () => {
                         </tr>
                       </thead>
                       <hr className='w-[95%] left-1/2 -translate-x-1/2 absolute'/>
-                      <tbody>
+                      <tbody className='divide-y divide-gray-200 w-full'>
                         {isAuthenticated ? (
                           //  allDataInPool
                           !portfolioSampleData ? (
@@ -243,14 +243,16 @@ const PortfolioDataComponent = () => {
                                   {Poolinfo?.pool_data.map((pool, indx) => (
                                     <span
                                       key={indx}
-                                      className='flex items-center justify-center gap-x-1 cursor-pointer border-[1px] border-[#FFFFFF66] rounded-2xl py-1 px-2'
+                                      className='flex items-center justify-center gap-x-1 cursor-pointer border-[1px] border-[#FFFFFF66] rounded-lg
+                                       py-1 px-2 backdrop-blur-sm bg-gray-800 ring-1 ring-gray-700/50'
                                     >
                                       <img
                                         src={pool.image}
                                         alt=''
                                         className='w-4 h-4'
                                       />
-                                     {Poolinfo?.pool_data.length < 4 ? <span className='font-bold'>{pool.token_name}</span> :""}
+                                     {Poolinfo?.pool_data.length < 4 ? <span className='font-semibold'>{pool.token_name}</span> :""}
+                                     <span>•</span>
                                       <span className='text-sm flex items-center justify-center'>{pool.weight * 100} %</span>
                                     </span>
                                   ))}
