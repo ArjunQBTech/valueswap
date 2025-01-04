@@ -123,7 +123,7 @@ const PortfolioDataComponent = () => {
       <div className='w-full h-screen text-white  px-8 mx-auto absolute'>
         <div className='flex justify-between  p-2 pb-6 pt-6 rounded-t-lg mx-auto'>
           {/* search box */}
-          <div className='flex w-full gap-x-2 justify-center items-center'>
+          {isAuthenticated ? (<div className='flex w-full gap-x-2 justify-center items-center'>
             <div className='relative w-full '>
               <div className='absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none'>
                 <svg
@@ -165,7 +165,7 @@ const PortfolioDataComponent = () => {
                 Create Pool
               </GradientButton>
             </div>
-          </div>
+          </div>):(<></>)}
         </div>
         <div className='flex flex-col font-gilroy min-h-[50%] bg-gray-700 bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10 border  border-[#FFFFFF66] rounded-2xl '>
           <div className='-my-2 overflow-x-auto'>
