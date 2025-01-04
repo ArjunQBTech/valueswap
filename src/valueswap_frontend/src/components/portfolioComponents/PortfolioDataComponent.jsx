@@ -9,6 +9,7 @@ import 'react-loading-skeleton/dist/skeleton.css'
 import { useAuth, useAuthClient } from '../utils/useAuthClient'
 import BorderGradientButton from '../../buttons/BorderGradientButton'
 import {portfolioSampleData} from "../../TextData"
+import { convertIntToCurrencyString } from '../../utils';
 const PortfolioDataComponent = () => {
   const [allDataInPool, setAllDataInPool] = useState([])
   const [displayCount, setDisplayCount] = useState(0)
@@ -258,25 +259,20 @@ const PortfolioDataComponent = () => {
                                   ))}
                                 </td>
                                 <td className='whitespace-nowrap py-4 pl-3 text-center text-sm md:text-base font-medium pr-2'>
-                                  $
-                                  {(() => {
-                                    const value = Poolinfo?.pool_data?.reduce(
+                                  {convertIntToCurrencyString(
+                                    Poolinfo?.pool_data?.reduce(
                                       (sum, item) => sum + BigInt(item.value),
                                       BigInt(0)
                                     )
-                                    return value?.toLocaleString('en-US')
-                                  })()}
+                                  )}
                                 </td>
                                 <td className='whitespace-nowrap px-3 py-4 text-sm md:text-base text-white text-center'>
-                                  {(() => {
-                                    const totalBalance =
-                                      Poolinfo?.pool_data?.reduce(
-                                        (sum, item) =>
-                                          sum + BigInt(item.balance),
-                                        BigInt(0)
-                                      )
-                                    return totalBalance?.toLocaleString('en-US')
-                                  })()}
+                                {convertIntToCurrencyString(
+                                    Poolinfo?.pool_data?.reduce(
+                                      (sum, item) => sum + BigInt(item.balance),
+                                      BigInt(0)
+                                    )
+                                  )}
                                 </td>
                                 <td className='whitespace-nowrap px-3 py-4 text-sm md:text-base text-white text-center'>
                                   1% - 2%
