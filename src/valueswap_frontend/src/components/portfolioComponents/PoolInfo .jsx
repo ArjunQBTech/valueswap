@@ -17,6 +17,7 @@ const PoolInfo = () => {
   const Heading = ['Pool Compositions', 'Swapping', 'Liquidiity Overview']
  const [openWithdraw, setOpenWithdraw] = useState(false)
  const [specificPool, setSpecificPool] = useState([])
+ const [poolInfo, setPoolInfo] = useState(null)
  const [lp, setLp] = useState(0)
  const { backendActor, principal, fetchMetadata } = useAuths()
 
@@ -24,7 +25,7 @@ const PoolInfo = () => {
   useEffect(() => {
     const poolData = async () =>{
      const pool = await backendActor.get_specific_pool_data(id)
-     
+     setPoolInfo(pool.Ok[0])
      console.log("pool info", pool);
      const poolDataArray = pool.Ok[0].pool_data;
      console.log("specific pool data array", poolDataArray);
@@ -89,21 +90,13 @@ const PoolInfo = () => {
               </div>
             </div> */}
           </div>
-          <div className='flex flex-col lg:flex-row justify-between w-full gap-11 mx-auto mt-7'>
-            <div className='min-w-[320px] flex flex-col justify-around items-start backdrop-blur-[32px] rounded-lg p-4 border border-white'>
+          <div className='flex flex-col justify-between w-full gap-11 mx-auto mt-7'>
+            {/* <div className='min-w-[320px] flex flex-col justify-around items-start backdrop-blur-[32px] rounded-lg p-4 border border-white'>
               <PoolInfoBox Heading={'TVL'} Data={`$ ${specificPool?.PoolMetaData?.TwentyFourHourVolume.toLocaleString('en-US')}`} />
               <PoolInfoBox Heading={'Fees (24h)'} Data={`$ ${specificPool?.PoolMetaData?.TwentyFourHourFees.toLocaleString('en-US')}`} />
               <PoolInfoBox Heading={'Weekly Incentives'} Data={`$ ${specificPool?.PoolMetaData?.PoolValue.toLocaleString('en-US')}`} />
-              {/* <div className='w-full sm:w-auto flex gap-4 h-20 lg:h-48 justify-center'>
-                <PoolInfoBox Heading={'Pool Value'} Data={`$ ${specificPool?.PoolMetaData?.PoolValue.toLocaleString('en-US')}`} />
-                <PoolInfoBox Heading={'24H_Fees'} Data={`$ ${specificPool?.PoolMetaData?.TwentyFourHourFees.toLocaleString('en-US')}`} />
-              </div>
-              <div className='w-full sm:w-auto flex gap-4 h-20 lg:h-48 justify-center'>
-                <PoolInfoBox Heading={'24H_Pool Volume'} Data={`$ ${specificPool?.PoolMetaData?.TwentyFourHourVolume.toLocaleString('en-US')}`} />
-                <PoolInfoBox Heading={'APR'} Data={`${specificPool?.PoolMetaData?.APRstart}% - ${specificPool?.PoolMetaData?.APRend}%`} />
-              </div> */}
-            </div>
-            <div className=' lg:w-[59%] p-4 text-white border border-white backdrop-blur-[32px] rounded-lg'>
+            </div> */}
+            <div className='p-4 text-white border border-white backdrop-blur-[32px] rounded-lg'>
               {/* pool info chart here in this div */}
               <div>
                 <div className='flex justify-between'>
@@ -142,7 +135,7 @@ const PoolInfo = () => {
             </div>
           </div>
 
-          <div className='flex md:flex-row flex-col items-center justify-between mt-2'>
+          <div className='flex md:flex-row flex-col items-center justify-evenly mt-2 w-full'>
           
 
          
@@ -179,7 +172,7 @@ const PoolInfo = () => {
 
           <div className='w-full grid grid-cols-1 md:grid-cols-2 gap-4'>
             <PoolCompositions TableData={specificPool?.PoolData} lp={lp}  specificPool={specificPool}/>
-            <PoolAttributes pool={specificPool} id={id}/>
+            <PoolAttributes pool={specificPool} poolInfo={poolInfo} id={id}/>
           </div>
           {/* <div >
             {currIndex === 0 && <PoolCompositions TableData={specificPool?.PoolData} />}

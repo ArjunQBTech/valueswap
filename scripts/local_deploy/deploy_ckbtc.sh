@@ -65,7 +65,7 @@ dfx deploy ckbtc --argument "$DEPLOY_ARGUMENTS"
 #!/bin/bash
 
 # Canister nickname for storing in the backend map
-NAME="lp_ledger"
+NAME="LP_ledger_canister"
 
 # Get actual canister ID from dfx
 CANISTER_ID=$(dfx canister id LP_ledger_canister)
@@ -92,4 +92,3 @@ dfx deploy
 # Check the balance of the default identity
 # balance=$(dfx canister call ckbtc icrc1_balance_of "(record {owner=principal\"${DEFAULT}\"; subaccount=null})")
 # echo "Balance of the DEFAULT account: $balance"
-
